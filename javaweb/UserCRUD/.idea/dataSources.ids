@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - HT1625@localhost" uuid="3ea53839-120d-49ea-8c88-24cb8fd8e8da">
+    <database-info product="MySQL" version="5.5.36" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.38 ( Revision: fe541c166cec739c74cc727c5da96c1028b4834a )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="ht1625"/>
+    <table name="t_user" schema="" catalog="ht1625" type="TABLE">
+      <column name="id" sqlType="CHAR" precision="32" scale="0" nullable="false" jdbcType="1"/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pass" sqlType="CHAR" precision="32" scale="0" nullable="true" jdbcType="1"/>
+      <column name="age" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="img" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" def="J2ltYWdlcy9kZWZhdWx0LmpwZyc="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_u_ud" table="t_userdetails" schema="" catalog="ht1625" columns="userID"/>
+    </table>
+    <table name="t_userdetails" schema="" catalog="ht1625" type="TABLE">
+      <column name="id" sqlType="CHAR" precision="32" scale="0" nullable="false" jdbcType="1"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="postid" sqlType="CHAR" precision="6" scale="0" nullable="true" jdbcType="1"/>
+      <column name="userID" sqlType="CHAR" precision="32" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_u_ud" columns="userID" ref-table="t_user" ref-schema="" ref-catalog="ht1625" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_u_ud" unique="false" columns="userID"/>
+    </table>
+  </data-source>
+</component>
