@@ -2,12 +2,21 @@ package com.hitrader.daoimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 
 import com.hitrader.dao.UserDao;
 import com.hitrader.model.User;
 
 public class UserDaoImpl extends BaseDao implements UserDao{
-
+	private Connection connection = null;
+	private PreparedStatement ps = null;
+	private ResultSet rs = null;
+	
 	@Override
 	public boolean addUser(User user) {
 		String sql = "insert into user(name, password, age, email) values (?, ?, ?, ?)";
@@ -70,6 +79,29 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 			return list;
 		}
 		return null;
+	}
+
+	@Override
+	public boolean insertUser(User user) {
+		String sql = "insert into user(name, password, age, email) values (?, ?, ?, ?)";
+		int res = 0;
+		connection = getConn();
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getPassword());
+			ps.setInt(3, user.getAge());
+			ps.setString(4, user.getEmail());
+			res = ps.executeUpdate();
+			if(res > 0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, ps, null);
+		}
+		return false;
 	}
 
 }

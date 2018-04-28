@@ -12,5 +12,10 @@ public interface UserDao {
 	public User selectUser(User user);
 	
 	public List<User> selectAllUser();
+	
+	public boolean insertUser(User user);
 }
 
+
+
+    
