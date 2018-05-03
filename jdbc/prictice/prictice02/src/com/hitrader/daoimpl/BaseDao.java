@@ -106,12 +106,40 @@ public class BaseDao {
 			rs = ps.executeQuery();
 			ResultSetMetaData rsd = rs.getMetaData();
 			while(rs.next()){
-				Map<Object, Object> map = new HashMap<Object, Object>();
-				for(int i = 0; i < rsd.getColumnCount(); i++){
-					String col_name = rsd.getColumnName(i+1);
-					Object values = rs.getObject(col_name);
-					map.put(col_name, values);	
-				}	
+				Map<Object, Object> map = new HashMap<Object, Object>();	
+				
+				Object idValue = rs.getObject("id");
+				Object roleValue = rs.getObject("role");
+				Object aidValue = rs.getObject("aid");
+				Object unameValue = rs.getObject("uname");
+				Object headValue = rs.getObject("head");
+				Object nationalNameValue = rs.getObject("national_name");
+				Object nationalUsNameValue = rs.getObject("national_us_name");
+				Object nationalTwNameValue = rs.getObject("national_tw_name");
+				Object nationalByNameValue = rs.getObject("national_by_name");
+				Object flagImgSrcValue = rs.getObject("flag_img_src");
+				Object commodityIdValue = rs.getObject("commodity_id");
+				Object commodityNameValue = rs.getObject("commodity_name");
+				Object strategyIdValue = rs.getObject("strategy_id");
+				Object nextWinRateValue = rs.getObject("next_win_rate");
+				Object crscValue = rs.getObject("crsc");		
+				
+				map.put("id", idValue);
+				map.put("role", roleValue);
+				map.put("aid", aidValue);
+				map.put("uname", unameValue);
+				map.put("head", headValue);
+				map.put("national_name", nationalNameValue);
+				map.put("national_us_name", nationalUsNameValue);
+				map.put("national_tw_name", nationalTwNameValue);
+				map.put("national_by_name", nationalByNameValue);
+				map.put("flag_img_src", flagImgSrcValue);
+				map.put("commodity_id", commodityIdValue);
+				map.put("commodity_name", commodityNameValue);
+				map.put("strategy_id", strategyIdValue);
+				map.put("next_win_rate", nextWinRateValue);
+				map.put("crsc", crscValue);
+				
 				data.add(map);
 			}
 			return data;
