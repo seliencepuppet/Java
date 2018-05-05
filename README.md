@@ -50,3 +50,32 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.73-b02, mixed mode)
 ```
 
 <br>
+
+--------------------------------------------------------------------
+
+#### 到这一步已经完成了解释器的解压,接下来再环境变量中进行添加设置
+
+```shell
+[root@linux-node1 local]# cd /etc/profile.d
+[root@linux-node1 profile.d]# vim jdk.sh
+#!/bin/bash
+#
+
+JAVA_HOME=/usr/local/jdk
+JAVA_BIN=/usr/local/jdk/bin
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME JAVA_BIN CLASSPATH PATH
+[root@linux-node1 profile.d]# chmod +x jdk.sh 
+[root@linux-node1 profile.d]# bash
+[root@linux-node1 profile.d]# java -version
+java version "1.8.0_73"
+Java(TM) SE Runtime Environment (build 1.8.0_73-b02)
+Java HotSpot(TM) 64-Bit Server VM (build 25.73-b02, mixed mode)
+```
+
+ok啦, 哈哈
+
+<br>
+
+---------------------------------------------------------------------------------------
