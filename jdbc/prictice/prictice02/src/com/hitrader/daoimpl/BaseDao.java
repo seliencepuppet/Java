@@ -110,71 +110,71 @@ public class BaseDao {
 				
 		Object idValue = rs.getObject("id");
 		Object roleValue = rs.getObject("role");
-				Object aidValue = rs.getObject("aid");
-				Object unameValue = rs.getObject("uname");
-				Object headValue = rs.getObject("head");
-				Object nationalNameValue = rs.getObject("national_name");
-				Object nationalUsNameValue = rs.getObject("national_us_name");
-				Object nationalTwNameValue = rs.getObject("national_tw_name");
-				Object nationalByNameValue = rs.getObject("national_by_name");
-				Object flagImgSrcValue = rs.getObject("flag_img_src");
-				Object commodityIdValue = rs.getObject("commodity_id");
-				Object commodityNameValue = rs.getObject("commodity_name");
-				Object strategyIdValue = rs.getObject("strategy_id");
-				Object nextWinRateValue = rs.getObject("next_win_rate");
-				Object crscValue = rs.getObject("crsc");		
+		Object aidValue = rs.getObject("aid");
+		Object unameValue = rs.getObject("uname");
+		Object headValue = rs.getObject("head");
+		Object nationalNameValue = rs.getObject("national_name");
+		Object nationalUsNameValue = rs.getObject("national_us_name");
+		Object nationalTwNameValue = rs.getObject("national_tw_name");
+		Object nationalByNameValue = rs.getObject("national_by_name");
+		Object flagImgSrcValue = rs.getObject("flag_img_src");
+		Object commodityIdValue = rs.getObject("commodity_id");
+		Object commodityNameValue = rs.getObject("commodity_name");
+		Object strategyIdValue = rs.getObject("strategy_id");
+		Object nextWinRateValue = rs.getObject("next_win_rate");
+		Object crscValue = rs.getObject("crsc");		
 				
-				map.put("id", idValue);
-				map.put("role", roleValue);
-				map.put("aid", aidValue);
-				map.put("uname", unameValue);
-				map.put("head", headValue);
-				map.put("national_name", nationalNameValue);
-				map.put("national_us_name", nationalUsNameValue);
-				map.put("national_tw_name", nationalTwNameValue);
-				map.put("national_by_name", nationalByNameValue);
-				map.put("flag_img_src", flagImgSrcValue);
-				map.put("commodity_id", commodityIdValue);
-				map.put("commodity_name", commodityNameValue);
-				map.put("strategy_id", strategyIdValue);
-				map.put("next_win_rate", nextWinRateValue);
-				map.put("crsc", crscValue);
+		map.put("id", idValue);
+		map.put("role", roleValue);
+		map.put("aid", aidValue);
+		map.put("uname", unameValue);
+		map.put("head", headValue);
+		map.put("national_name", nationalNameValue);
+		map.put("national_us_name", nationalUsNameValue);
+		map.put("national_tw_name", nationalTwNameValue);
+		map.put("national_by_name", nationalByNameValue);
+		map.put("flag_img_src", flagImgSrcValue);
+		map.put("commodity_id", commodityIdValue);
+		map.put("commodity_name", commodityNameValue);
+		map.put("strategy_id", strategyIdValue);
+		map.put("next_win_rate", nextWinRateValue);
+		map.put("crsc", crscValue);
 				
-				data.add(map);
-			}
-			return data;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally {
-			close(conn, ps, rs);
-		}
-		return null;
+		data.add(map);
+	    }
+	    return data;
+	}catch(SQLException e){
+	    e.printStackTrace();
+	}finally {
+	    close(conn, ps, rs);
 	}
+        return null;
+    }
 	
-	public void close(Connection conn, PreparedStatement ps, ResultSet rs){
-		if(rs != null){
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(ps != null){
-			try {
-				ps.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(rs != null){
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+    public void close(Connection conn, PreparedStatement ps, ResultSet rs){
+        if(rs != null){
+	    try {
+		rs.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
+		
+	if(ps != null){
+	    try {
+	        ps.close();
+	    } catch (SQLException e) {
+		e.printStackTrace();
+	    }
+	}
+		
+	if(rs != null){
+	    try {
+		rs.close();
+	    } catch (SQLException e) {
+		e.printStackTrace();
+	    }
+	}
+    }
 	
 }
