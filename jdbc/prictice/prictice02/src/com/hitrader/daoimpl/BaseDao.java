@@ -18,98 +18,98 @@ import java.sql.ResultSetMetaData;
 import java.sql.PreparedStatement;
 
 public class BaseDao {
-	public final static String DRIVER = "com.mysql.jdbc.Driver";
-	public final static String path = "jdbc:mysql://10.203.206.234:3306/hia";
-	public final static String name = "hia";
-	public final static String password = "SubVersion1234567890";
-	private Connection conn = null;
-	private PreparedStatement ps = null;
-	private ResultSet rs = null;
+    public final static String DRIVER = "com.mysql.jdbc.Driver";
+    public final static String path = "jdbc:mysql://10.203.206.234:3306/hia";
+    public final static String name = "hia";
+    public final static String password = "SubVersion1234567890";
+    private Connection conn = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
 	
-	static{
-		try {
-			Class.forName(DRIVER);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+    static{
+        try {
+            Class.forName(DRIVER);
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
 	}
+    }
 	
-	public Connection getConn(){
-		try {
-			conn = DriverManager.getConnection(path, name, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return conn;
+    public Connection getConn(){
+	try {
+	    conn = DriverManager.getConnection(path, name, password);
+	} catch (SQLException e) {
+	    e.printStackTrace();
 	}
+	    return conn;
+    }
 	
-	public boolean operUpdate(String sql, List<Object> params){
-		int res = 0;
-		conn = getConn();
-		try {
-			ps = conn.prepareStatement(sql);
-			for(int i = 0; i < params.size(); i++){
-				ps.setObject(i+1, params.get(i));
-			}
-			res = ps.executeUpdate();
-			System.out.println("结果为: " + res);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(conn, ps, null);
-		}
+    public boolean operUpdate(String sql, List<Object> params){
+	int res = 0;
+	conn = getConn();
+	try {
+	    ps = conn.prepareStatement(sql);
+	    for(int i = 0; i < params.size(); i++){
+	        ps.setObject(i+1, params.get(i));
+	    }
+	    res = ps.executeUpdate();
+	    System.out.println("陆谩鹿没脦陋: " + res);
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	} finally {
+	    close(conn, ps, null);
+	}
 		
-		if(res>0){
-			return true;
-		}
-		return false;
+	if(res>0){
+	    return true;
 	}
+	    return false;
+    }
 	
-	public <T> List<T> operQuery(String sql, List<Object> params, Class<T> cls)throws Exception {
-		List<T> data = new ArrayList<T>();
-		try{
-			conn = getConn();
-			ps = conn.prepareStatement(sql);
-			if(params != null){
-				for(int i = 0; i < params.size(); i++){
-					ps.setObject(i+1, params.get(i));
-				}
-			}
+    public <T> List<T> operQuery(String sql, List<Object> params, Class<T> cls)throws Exception {
+        List<T> data = new ArrayList<T>();
+	try{
+	    conn = getConn();
+	    ps = conn.prepareStatement(sql);
+	    if(params != null){
+	        for(int i = 0; i < params.size(); i++){
+		    ps.setObject(i+1, params.get(i));
+		}
+	    }
 			
-			rs = ps.executeQuery();
-			ResultSetMetaData rsd = rs.getMetaData();
-			while(rs.next()){
-				T m = cls.newInstance();
-				for(int i = 0; i < rsd.getColumnCount(); i++){
-					String col_name = rsd.getColumnName(i+1);
-					Object values = rs.getObject(col_name);
-					Field field = cls.getDeclaredField(col_name);
-					field.setAccessible(true);
-					field.set(m, values);
-				}
-				data.add(m);
-			}
-			return data;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally {
-			close(conn, ps, rs);
+	    rs = ps.executeQuery();
+	    ResultSetMetaData rsd = rs.getMetaData();
+	    while(rs.next()){
+		T m = cls.newInstance();
+		for(int i = 0; i < rsd.getColumnCount(); i++){
+		    String col_name = rsd.getColumnName(i+1);
+		    Object values = rs.getObject(col_name);
+		    Field field = cls.getDeclaredField(col_name);
+		    field.setAccessible(true);
+		    field.set(m, values);
 		}
-		return null;
+		data.add(m);
+	    }
+	    return data;
+	}catch(SQLException e){
+	    e.printStackTrace();
+	}finally {
+	    close(conn, ps, rs);
 	}
+	    return null;
+    }
 	
-	public <T> List<Map> operDarkHorse(String sql, List<Object> params, Class<T> cls)throws Exception {
-		List<Map> data = new ArrayList<Map>();
-		try{
-			conn = getConn();
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
-			ResultSetMetaData rsd = rs.getMetaData();
-			while(rs.next()){
-				Map<Object, Object> map = new HashMap<Object, Object>();	
+    public <T> List<Map> operDarkHorse(String sql, List<Object> params, Class<T> cls)throws Exception {
+        List<Map> data = new ArrayList<Map>();
+	try{
+	    conn = getConn();
+	    ps = conn.prepareStatement(sql);
+	    rs = ps.executeQuery();
+            ResultSetMetaData rsd = rs.getMetaData();
+	    while(rs.next()){
+		Map<Object, Object> map = new HashMap<Object, Object>();	
 				
-				Object idValue = rs.getObject("id");
-				Object roleValue = rs.getObject("role");
+		Object idValue = rs.getObject("id");
+		Object roleValue = rs.getObject("role");
 				Object aidValue = rs.getObject("aid");
 				Object unameValue = rs.getObject("uname");
 				Object headValue = rs.getObject("head");
