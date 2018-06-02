@@ -66,3 +66,5 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.73-b02, mixed mode)
 ok啦, 哈哈
 
 <br>
+
+java解释器的使用
