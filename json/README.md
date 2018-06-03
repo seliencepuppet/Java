@@ -70,3 +70,27 @@ public class jsonTest {
 ```
 
 是不是和上面的数据一模一样
+
+
+## 将list集合转换成为json数据
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+public class Test04 {
+    public static void main(String[] args) {
+    	List<Object> list = new ArrayList<Object>();
+    	list.add("123");
+    	list.add(true);
+   	list.add("hello world!");
+    	list.add("go");
+    	System.out.println("list value is: " + list);
+    	JSONArray json = new JSONArray();
+    	json = JSONArray.fromObject(list);
+        System.out.println("to transfer json value is: " + json);
+    }
+}
+```
