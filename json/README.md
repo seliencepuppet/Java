@@ -187,3 +187,36 @@ public class Test05 {
 ```result
 The result value is: {"data":[{"aaa":111},{"bbb":222},{"ccc":333},{"ddd":444}]}
 ```
+
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+public class Test02 {
+    public static void main(String[] args) {
+	String jsondata = "[{\"currency_type\":\"2\",\"hot_ranking\":\"0\",\"id\":\"23\",\"name_chinese\":\"法国CAC\",\"name_english\":\"FRA40\",\"price_high\":\"5520.7500\",\"price_low\":\"5506.7500\",\"price_new\":\"5507.0500\",\"price_old\":\"5524.6100\",\"price_spread\":\"-0.32\",\"refresh_time\":\"14:24:15\"}]";
+	JSONArray jsonarray = JSONArray.fromObject(jsondata);
+	Object[] os = jsonarray.toArray();
+		
+	List<Map> list = new ArrayList<Map>();
+	for(int i = 0; i < os.length; i++){
+	    JSONObject jsonObj = JSONObject.fromObject(os[i]);
+	    Map<Object, Object> map = new HashMap<Object, Object>();
+	    for (Object k : jsonObj.keySet()) {
+		map.put(k, jsonObj.get(k));
+	    }
+	    list.add(map);
+	}
+		
+	for (Map map : list) {
+	    System.out.println(map);
+	}
+    }
+}
+```
