@@ -68,3 +68,5 @@ public class jsonTest {
 ```json
 {"commodity":"apple","1":"hello world!","sex":"male","name":"seliencepuppet"}
 ```
+
+是不是和上面的数据一模一样
