@@ -11,7 +11,9 @@ java转json数据类型所需要的jar包文件如下
 * ezmorph-1.0.6.jar
 * json-lib-2.4-jdk15.jar
 
-## 将map集合转换成为json数据
+<br>
+
+## 以下会将map集合转换成为json数据
 
 ```java
 
@@ -71,8 +73,9 @@ public class jsonTest {
 
 是不是和上面的数据一模一样
 
+<br>
 
-## 将list集合转换成为json数据
+## 以下代码会将list集合转换成为json数据
 ```java
 import java.util.ArrayList;
 import java.util.List;
