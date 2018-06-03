@@ -26,8 +26,8 @@ public class jsonTest {
         map.put("sex", "male");
         map.put("name", "seliencepuppet");
         JSONObject json = new JSONObject();
-		    json = JSONObject.fromObject(map);
-		    System.out.println(json);
+	json = JSONObject.fromObject(map);
+	System.out.println(json);
     }
 }
 ```
