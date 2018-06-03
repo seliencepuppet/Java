@@ -96,7 +96,7 @@ public class Test04 {
 ```
 
 再次运行就能够将list集合转化成为json数据格式了
-```json
+```result
 list value is: [123, true, hello world!, go]
 to transfer json value is: ["123",true,"hello world!","go"]
 ```
