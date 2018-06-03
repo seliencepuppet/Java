@@ -142,3 +142,48 @@ public class Test05 {
 ```result
 The result value is: [{"aaa":111},{"bbb":222},{"ccc":333},{"ddd":444}]
 ```
+
+## 一个json对象包含一个json数组格式的转换
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+public class Test05 {
+    public static void main(String[] args) {
+	Map<Object, Object> map01 = new HashMap<Object, Object>();		
+	Map<Object, Object> map02 = new HashMap<Object, Object>();
+	Map<Object, Object> map03 = new HashMap<Object, Object>();
+	Map<Object, Object> map04 = new HashMap<Object, Object>();
+
+	map01.put("aaa", 111);
+	map02.put("bbb", 222);
+	map03.put("ccc", 333);
+	map04.put("ddd", 444);
+		
+	List<Map> list = new ArrayList<Map>();
+	list.add(map01);
+	list.add(map02);
+	list.add(map03);
+	list.add(map04);
+
+	List<JSONObject> jsonList = new ArrayList<>(); 
+	for (Map map : list) {
+	    jsonList.add(JSONObject.fromObject(map));
+	}
+	JSONArray jsonArray = JSONArray.fromObject(jsonList);
+	JSONObject json = new JSONObject();
+	json.put("data", jsonArray);
+	System.out.println("The result value is: " + json);
+    }
+}
+```
+
+再次运行就能够看到一个包含json数组的数据格式了
+```result
+The result value is: {"data":[{"aaa":111},{"bbb":222},{"ccc":333},{"ddd":444}]}
+```
