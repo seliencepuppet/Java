@@ -100,3 +100,39 @@ public class Test04 {
 list value is: [123, true, hello world!, go]
 to transfer json value is: ["123",true,"hello world!","go"]
 ```
+
+## 使用list集合和map集合创建一个多条数据的json数组
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import net.sf.json.JSONObject;
+
+public class Test05 {
+    public static void main(String[] args) {
+	Map<Object, Object> map01 = new HashMap<Object, Object>();		
+	Map<Object, Object> map02 = new HashMap<Object, Object>();
+	Map<Object, Object> map03 = new HashMap<Object, Object>();
+	Map<Object, Object> map04 = new HashMap<Object, Object>();
+
+	map01.put("aaa", 111);
+	map02.put("bbb", 222);
+	map03.put("ccc", 333);
+	map04.put("ddd", 444);
+		
+	List<Map> list = new ArrayList<Map>();
+	list.add(map01);
+	list.add(map02);
+	list.add(map03);
+	list.add(map04);
+
+	List<JSONObject> jsonList = new ArrayList<>(); 
+	for (Map map : list) {
+	    jsonList.add(JSONObject.fromObject(map));
+	}
+	System.out.println(jsonList);
+    }
+}
+```
