@@ -13,7 +13,7 @@ java转json数据类型所需要的jar包文件如下
 
 <br>
 
-## 以下会将map集合转换成为json数据
+## 以下代码会将map集合转换成为json数据
 
 ```java
 
