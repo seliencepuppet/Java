@@ -132,7 +132,8 @@ public class Test05 {
 	for (Map map : list) {
 	    jsonList.add(JSONObject.fromObject(map));
 	}
-	System.out.println(jsonList);
+	JSONArray jsonArray = JSONArray.fromObject(jsonList);
+	System.out.println(jsonArray);
     }
 }
 ```
