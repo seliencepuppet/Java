@@ -215,8 +215,14 @@ public class Test02 {
 	}
 		
 	for (Map map : list) {
-	    System.out.println(map);
+	    System.out.println("The map value is: " + map);
 	}
     }
 }
+```
+
+再次运行就能够看到json转换成为map的数据格式了
+```result
+{price_spread=-0.32, price_old=5524.6100, name_chinese=法国CAC, currency_type=2, name_english=FRA40, price_new=5507.0500, hot_ranking=0, id=23, price_high=5520.7500, price_low=5506.7500, refresh_time=14:24:15}
+
 ```
