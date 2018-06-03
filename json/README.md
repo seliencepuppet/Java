@@ -43,3 +43,28 @@ Caused by: java.lang.ClassCastException: JSON keys must be strings.
 	at net.sf.json.JSONObject._fromMap(JSONObject.java:1145)
 	... 3 more
 ```
+
+正确的代码应该是如下
+```java
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class jsonTest {
+    public static void main(String[] args){
+        Map<Object, Object> map = new HashMap<Object, Object>(); 
+        map.put("commodity", "apple");
+        map.put("1", "hello world!");
+        map.put("sex", "male");
+        map.put("name", "seliencepuppet");
+        JSONObject json = new JSONObject();
+	json = JSONObject.fromObject(map);
+	System.out.println(json);
+    }
+}
+```
+
+再次运行就能够将map集合转化成为json数据格式了
+```json
+{"commodity":"apple","1":"hello world!","sex":"male","name":"seliencepuppet"}
+```
