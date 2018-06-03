@@ -133,7 +133,12 @@ public class Test05 {
 	    jsonList.add(JSONObject.fromObject(map));
 	}
 	JSONArray jsonArray = JSONArray.fromObject(jsonList);
-	System.out.println(jsonArray);
+	System.out.println("The result value is: " + jsonArray);
     }
 }
+```
+
+再次运行就能够看到map + list数据已经被转换成为json数组格式了
+```result
+The result value is: [{"aaa":111},{"bbb":222},{"ccc":333},{"ddd":444}]
 ```
