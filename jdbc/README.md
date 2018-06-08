@@ -1,5 +1,12 @@
 #### 使用jdbc的方式连接mysql数据库
 
+```db.config
+driver = com.mysql.jdbc.Driver
+path = jdbc.mysql://127.0.0.1:3306/school
+name = root
+password = 123456
+```
+
 ```java
 import java.io.BufferedReader;
 import java.io.File;
