@@ -13,6 +13,12 @@ java转json数据类型所需要的jar包文件如下
 
 <br>
 
+倒入了jar包引用里面的类生成json对象方法
+```java
+JSONObject json = new JSONObject();
+json.fromObject(object);
+```
+
 ## 以下代码会将map集合转换成为json数据
 
 ```java
