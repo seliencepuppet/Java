@@ -1,4 +1,6 @@
 
+使用java连接rabbitmq消息队列的jar包如下
+
 ```java
 amqp-client-5.2.0.jar 		
 http-client-2.0.1.RELEASE.jar 	
